@@ -1,0 +1,16 @@
+{
+    "name": "chiragchhillar/helpdesk-package",
+    "description": "Helpdesk packages for ServiceNext",
+    "require": {
+    	"php": ">=5.5.9",
+        "illuminate/support": "^5.4",
+        "illuminate/container": "^5.4",
+        "guzzlehttp/guzzle": "^6.2",
+        "predis/predis": "^1.1"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"ChiragChhillar\\Helpdesk\\": "src/"
+    	}
+    }
+}
