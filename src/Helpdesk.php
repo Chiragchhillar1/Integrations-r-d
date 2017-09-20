@@ -11,6 +11,11 @@ class Helpdesk
 		return new \ChiragChhillar\Helpdesk\Salesforce\Manager();
 	}
 
+	public static function servicenow()
+	{
+		return new \ChiragChhillar\Helpdesk\Servicenow\Manager();
+	}
+
 	public static function zendesk()
 	{
 		return new \ChiragChhillar\Helpdesk\Zendesk\Manager();

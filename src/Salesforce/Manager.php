@@ -24,9 +24,9 @@ class Manager
 	                                'form_params' => [
 	                                    'grant_type' 	=> 'authorization_code',
 	                                    'code' 		 	=> $code,
-	                                    'client_id'  	=> config('crms.salesforce.client_id'),
-	                                    'client_secret' => config('crms.salesforce.client_secret'),
-	                                    'redirect_uri' => config('crms.salesforce.redirect_url')
+	                                    'client_id'  	=> config('services.salesforce.client_id'),
+	                                    'client_secret' => config('services.salesforce.client_secret'),
+	                                    'redirect_uri' => config('services.salesforce.redirect_uri')
 	                                ]
 	                            ]);
 	    $accessToken = json_decode($accessToken->getBody(), true);
