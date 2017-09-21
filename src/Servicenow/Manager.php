@@ -89,4 +89,92 @@ class Manager
         ]);
         return $knowledgeBase;
     }
+
+    /**
+     * Get users from servicenow
+     * @return [type] [description]
+     */
+      public function fetchUsers($accessToken)
+      {
+        $client = new Client();
+        $users = $client->request('GET', 'https://dev34876.service-now.com/api/now/table/sys_user', [
+            'headers' => [
+                'Accept'    => 'application/json',
+                'Authorization' => 'Bearer '.$accessToken
+            ]
+        ]);
+        $response = json_decode($users->getBody(), true);
+        return $response;
+      }
+
+    /**
+     * Get usersGroup from servicenow
+     * @return [type] [description]
+     */
+      public function fetchUsersGroup()
+      {
+        $client = new Client();
+          $groups = $client->request('GET', 'https://dev34876.service-now.com/api/now/table/sys_user_group', [
+              'headers' => [
+                  'Accept'    => 'application/json',
+          'Authorization' => 'Bearer 2bTyt1TbEVSc-mgiYVgGRr1tCyfxs-iM1CJdnmGKPhDg6qxAwZn84terTlmaO-drBnV47W-lvnwkZahYHS6TtQ'
+              ]
+          ]);
+          $response = json_decode($groups->getBody(), true);
+          return $response;
+      }
+
+    /**
+     * create problem in servicenow incomplete
+     * @return [type] [description]
+     */
+      public function createProblem($accessToken, $data)
+      {
+        $client = new Client();
+
+        $problem = $client->request('POST', 'https://dev34876.service-now.com/api/now/table/problem', [
+           'headers' => [
+               'Authorization' => 'Bearer ' . $accessToken,
+               'Content-Type' => 'application/json'
+           ],
+           'json' => $data
+        ]);
+
+        $problem = json_decode($problem->getBody(), true);
+        return $problem;
+      }
+
+    /**
+     * Get problems in servicenow
+     * @return [type] [description]
+     */
+      public function fetchProblems($accessToken)
+      {
+        $client = new Client();
+          $problems = $client->request('GET', 'https://dev34876.service-now.com/api/now/table/problem', [
+              'headers' => [
+                  'Accept'    => 'application/json',
+                  'Authorization' => 'Bearer '.$accessToken
+              ]
+          ]);
+          $response = json_decode($problems->getBody(), true);
+          return $response;
+      }
+
+      /**
+       * Get problem in servicenow
+       * @return [type] [description]
+       */
+        public function fetchProblem($accessToken, $problemId)
+        {
+          $client = new Client();
+            $problems = $client->request('GET', 'https://dev34876.service-now.com/api/now/table/problem/'.$problemId, [
+                'headers' => [
+                    'Accept'    => 'application/json',
+                    'Authorization' => 'Bearer '.$accessToken
+                ]
+            ]);
+            $response = json_decode($problems->getBody(), true);
+            return $response;
+        }
 }
