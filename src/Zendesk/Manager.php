@@ -47,7 +47,7 @@ class Manager
 	public function allArticles($accessToken, $instanceUrl, $userName)
 	{
 		$client = new Client();
-	    $response = $client->request('GET', $instanceUrl.'/api/v2/help_center/articles.json', [
+	    $response = $client->request('GET', $instanceUrl.'/api/v2/help_center/articles.json?per_page=100', [
                         'headers' => [
 		                'Content-Type' => 'application/json'
 		            ],
