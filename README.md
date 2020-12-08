@@ -1,1 +1,1 @@
-# snx-bi-package
+# bi-package
